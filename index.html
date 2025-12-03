@@ -51,16 +51,24 @@
     }
 
     .avatar {
-      width: 96px;
-      height: 96px;
-      border-radius: 999px;
-      border: 2px solid var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at 30% 20%, #38bdf8, #1d4ed8);
-      font-size: 32px;
-      font-weight: 700;
+        width: 120px;
+        height: 120px;
+        border-radius: 999px;
+        border: 3px solid var(--accent);
+        overflow: hidden;              /* recorta la foto en círculo */
+        flex-shrink: 0;                /* que no se deforme con el flex */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        background: radial-gradient(circle at 30% 20%, #38bdf8, #1d4ed8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;             /* recorte elegante */
+        display: block;
     }
 
     header h1 {
@@ -290,8 +298,10 @@
 <body>
   <div class="cv">
     <header>
-      <div class="avatar"><img src="https://media.licdn.com/dms/image/v2/D4E03AQFdMRfsaOPFuQ/profile-displayphoto-shrink_800_800/B4EZaoRpbzHoAk-/0/1746579921430?e=1766620800&v=beta&t=MePHvDUuRd_do_oj1OR8Eg-CoHkrIDyGgktQ9xk-91U" alt="senior melkiades"></div>
-
+        <div class="avatar">
+            <img src="https://media.licdn.com/dms/image/v2/D4E03AQFdMRfsaOPFuQ/profile-displayphoto-shrink_800_800/B4EZaoRpbzHoAk-/0/1746579921430?e=1766620800&v=beta&t=MePHvDUuRd_do_oj1OR8Eg-CoHkrIDyGgktQ9xk-91U"
+                alt="Foto de perfil de Señor Melquiades">
+        </div>
       <div>
         <h1>Julio Melquiades Rodríguez Soberano</h1>
         <h2>Senior Developer · .NET / PHP / JavaScript</h2>
