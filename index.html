@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>CV - Julio Melquiades Rodríguez Soberano</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-card: #0b1120;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --chip-bg: #111827;
+      --border-soft: rgba(148, 163, 184, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 55%);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding: 24px;
+    }
+
+    .cv {
+      max-width: 1080px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.98));
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.7);
+      border: 1px solid var(--border-soft);
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border-soft);
+      padding-bottom: 20px;
+    }
+
+    .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 999px;
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 30% 20%, #38bdf8, #1d4ed8);
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    header h1 {
+      font-size: 1.9rem;
+      margin-bottom: 4px;
+    }
+
+    header h2 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .summary {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      max-width: 620px;
+    }
+
+    .tagline {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--chip-bg);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      border: 1px solid var(--border-soft);
+    }
+
+    .contact {
+      margin-left: auto;
+      font-size: 0.86rem;
+      min-width: 220px;
+    }
+
+    .contact a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 2.1fr 1.4fr;
+      gap: 24px;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 900px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+      .contact {
+        margin-left: 0;
+      }
+    }
+
+    section {
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 22px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: 14px;
+      padding: 16px 18px;
+      border: 1px solid #1f2937;
+    }
+
+    .exp-item {
+      margin-bottom: 14px;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 0.92rem;
+    }
+
+    .exp-role {
+      font-weight: 600;
+    }
+
+    .exp-company {
+      color: var(--accent);
+      font-size: 0.88rem;
+    }
+
+    .exp-dates {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      white-space: nowrap;
+    }
+
+    .exp-body {
+      margin-top: 4px;
+      color: var(--text-muted);
+      font-size: 0.86rem;
+    }
+
+    .exp-tags {
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .exp-tags span {
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--chip-bg);
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 18px;
+      font-size: 0.86rem;
+    }
+
+    .skill-name {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2px;
+    }
+
+    .skill-level {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+
+    .skill-bar {
+      width: 100%;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(30, 64, 175, 0.9);
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #38bdf8, #22c55e);
+      transform-origin: left center;
+      width: 0;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 0.78rem;
+    }
+
+    .pill-list span {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: var(--chip-bg);
+      color: var(--text-muted);
+      border: 1px solid #1f2937;
+    }
+
+    ul {
+      margin-left: 16px;
+      margin-top: 4px;
+    }
+
+    li {
+      margin-bottom: 3px;
+    }
+
+    .toggle-btn {
+      margin-top: 10px;
+      font-size: 0.8rem;
+      border: none;
+      border-radius: 999px;
+      padding: 5px 11px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      cursor: pointer;
+    }
+
+    .toggle-btn:hover {
+      background: rgba(56, 189, 248, 0.25);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="cv">
+    <header>
+      <div class="avatar">JR</div>
+
+      <div>
+        <h1>Julio Melquiades Rodríguez Soberano</h1>
+        <h2>Senior Developer · .NET / PHP / JavaScript</h2>
+        <p class="summary">
+            Busco un crecimiento constante tanto personal como profesional, dando siempre lo mejor de mí dentro y fuera del equipo de trabajo. 
+            Me gusta crear, adaptar, compartir y adoptar herramientas, estrategias y métodos que faciliten la colaboración. 
+            Disfruto compartir y aprender conocimiento de mis compañeros y amigos. 
+            Me apasiona la mejora continua y tomo acción inscribiéndome por iniciativa propia en cursos en línea. 
+            Valoro mucho cuando la empresa se preocupa por el desarrollo de su equipo.
+        </p>
+        <div class="tagline">
+          <span class="chip">+10 años de experiencia</span>
+          <span class="chip">Back-end &amp; Front-end</span>
+          <span class="chip">Testing &amp; automatización</span>
+        </div>
+      </div>
+
+      <div class="contact">
+        <div><strong>Tel:</strong> 998 162 4212</div>
+        <div>
+          <strong>Email:</strong>
+          <a href="mailto:julio.rodriguez.soberano@gmail.com">
+            julio.rodriguez.soberano@gmail.com
+          </a>
+        </div>
+        <div>
+          <strong>LinkedIn:</strong>
+          <a href="https://www.linkedin.com/in/julio-melquiades-rodriguez-soberano-9097b6145" target="_blank">
+            /julio-melquiades...
+          </a>
+        </div>
+        <div style="margin-top: 8px;"><strong>Ubicación:</strong> Cancún, Q. Roo, México</div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Columna izquierda -->
+      <div>
+        <section>
+          <div class="section-title">Experiencia</div>
+          <div class="card">
+            <div class="exp-item">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-role">Senior .NET Developer</div>
+                  <div class="exp-company">Grupo Xcaret</div>
+                </div>
+                <div class="exp-dates">2021 – Actualidad</div>
+              </div>
+              <div class="exp-body">
+                Desarrollo y mantenimiento de aplicaciones y servicios .NET para el ecosistema
+                de reservas y experiencias Xcaret. Apoyo a QA y operación corrigiendo incidencias
+                y mejorando flujos de negocio críticos.
+              </div>
+              <div class="exp-tags">
+                <span>ASP.NET</span><span>C#</span><span>SQL Server</span>
+                <span>DevExpress</span><span>APIs REST</span>
+              </div>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-role">Web Developer &amp; System Analyst</div>
+                  <div class="exp-company">Consolide</div>
+                </div>
+                <div class="exp-dates">2017 – 2020</div>
+              </div>
+              <div class="exp-body">
+                Mantenimiento y desarrollo de herramientas web y de escritorio para nómina,
+                recursos humanos y reportes contables. Desarrollo de reportes en VB.NET,
+                consultas SQL y diseño de interfaces internas.
+              </div>
+              <div class="exp-tags">
+                <span>VB.NET</span><span>SQL</span><span>Bootstrap</span><span>UI/UX</span>
+              </div>
+            </div>
+
+            <div class="exp-item">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-role">Analista Programador / Web Developer</div>
+                  <div class="exp-company">Somos Render</div>
+                </div>
+                <div class="exp-dates">2013 – 2017</div>
+              </div>
+              <div class="exp-body">
+                Desarrollo y mantenimiento de CRM y sitios web para clientes del sector turismo,
+                adaptando diseños, contenidos y funcionalidades a las necesidades del negocio.
+              </div>
+              <div class="exp-tags">
+                <span>PHP</span><span>HTML/CSS</span><span>SEO</span>
+              </div>
+            </div>
+
+            <div id="extra-experience" class="hidden">
+              <div class="exp-item">
+                <div class="exp-header">
+                  <div>
+                    <div class="exp-role">Tester · Software Analyst</div>
+                    <div class="exp-company">Best Day Travel</div>
+                  </div>
+                  <div class="exp-dates">2015</div>
+                </div>
+                <div class="exp-body">
+                  Pruebas funcionales de la herramienta de reservas WebMatrix, validando la
+                  integración con proveedores de hoteles, vuelos y autos, y seguimiento de
+                  incidencias junto al product owner.
+                </div>
+                <div class="exp-tags">
+                  <span>Testing</span><span>QA</span><span>APIs externas</span>
+                </div>
+              </div>
+
+              <div class="exp-item">
+                <div class="exp-header">
+                  <div>
+                    <div class="exp-role">Freelance Web Developer</div>
+                    <div class="exp-company">NexusTours / Maritur y otros</div>
+                  </div>
+                  <div class="exp-dates">2011 – 2013</div>
+                </div>
+                <div class="exp-body">
+                  Diseño, desarrollo e implementación de sitios web y blogs para empresas
+                  turísticas, incluyendo mantenimiento de portales existentes y trabajo con
+                  WordPress.
+                </div>
+                <div class="exp-tags">
+                  <span>WordPress</span><span>PHP</span><span>SEO</span>
+                </div>
+              </div>
+            </div>
+
+            <button class="toggle-btn" id="toggle-exp">Ver más experiencia</button>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-title">Educación</div>
+          <div class="card">
+            <div class="exp-item">
+              <div class="exp-header">
+                <div>
+                  <div class="exp-role">Ingeniería en Sistemas Computacionales</div>
+                  <div class="exp-company">Tecnológico Nacional de México · Campus Cancún</div>
+                </div>
+                <div class="exp-dates">2010 – 2016</div>
+              </div>
+              <div class="exp-body">
+                Formación en programación, bases de datos, redes y desarrollo de software.
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Columna derecha -->
+      <div>
+        <section>
+          <div class="section-title">Stack principal</div>
+          <div class="card">
+            <div class="skill-grid">
+              <div>
+                <div class="skill-name">
+                  <span>SQL / MySQL</span>
+                  <span class="skill-level">95%</span>
+                </div>
+                <div class="skill-bar" data-level="95">
+                  <div class="skill-bar-fill"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="skill-name">
+                  <span>C# / .NET</span>
+                  <span class="skill-level">95%</span>
+                </div>
+                <div class="skill-bar" data-level="95">
+                  <div class="skill-bar-fill"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="skill-name">
+                  <span>PHP</span>
+                  <span class="skill-level">90%</span>
+                </div>
+                <div class="skill-bar" data-level="90">
+                  <div class="skill-bar-fill"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="skill-name">
+                  <span>JavaScript / jQuery</span>
+                  <span class="skill-level">90%</span>
+                </div>
+                <div class="skill-bar" data-level="90">
+                  <div class="skill-bar-fill"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="skill-name">
+                  <span>HTML &amp; CSS / Bootstrap</span>
+                  <span class="skill-level">100%</span>
+                </div>
+                <div class="skill-bar" data-level="100">
+                  <div class="skill-bar-fill"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="skill-name">
+                  <span>Node.js / Express</span>
+                  <span class="skill-level">60%</span>
+                </div>
+                <div class="skill-bar" data-level="60">
+                  <div class="skill-bar-fill"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="skill-name">
+                  <span>Angular / React</span>
+                  <span class="skill-level">60%</span>
+                </div>
+                <div class="skill-bar" data-level="60">
+                  <div class="skill-bar-fill"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="skill-name">
+                  <span>Python</span>
+                  <span class="skill-level">40%</span>
+                </div>
+                <div class="skill-bar" data-level="40">
+                  <div class="skill-bar-fill"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-title">Herramientas &amp; Top Skills</div>
+          <div class="card">
+            <div class="pill-list">
+              <span>Git</span>
+              <span>Azure DevOps</span>
+              <span>CI/CD básico</span>
+              <span>Docker (básico)</span>
+              <span>APIs REST</span>
+              <span>SOAP UI</span>
+              <span>Postman</span>
+              <span>Selenium</span>
+              <span>Testing manual</span>
+              <span>UiPath (RPA)</span>
+              <span>Apache Cordova</span>
+              <span>Responsive design</span>
+              <span>Maquetación UX</span>
+              <span>SEO</span>
+              <span>Photoshop</span>
+              <span>Illustrator</span>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-title">Proyectos destacados</div>
+          <div class="card">
+            <ul>
+              <li>
+                Dashboard de ventas embebido en Microsoft Teams, con reportes gráficos
+                basados en SQL, filtros por fechas y personalización de colores.
+              </li>
+              <li>
+                Sitios web para empresas turísticas con optimización básica de SEO y
+                diseño responsivo.
+              </li>
+              <li>
+                Automatización de pruebas con Selenium, SOAP UI y Postman para validar
+                flujos críticos de negocio.
+              </li>
+              <li>
+                Prototipos de apps móviles usando Apache Cordova y apps de escritorio
+                en VB.NET para generación de reportes.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-title">Soft Skills</div>
+          <div class="card">
+            <ul>
+              <li>Trabajo en equipo y comunicación directa con negocio.</li>
+              <li>Manejo de carácter y resolución de conflictos.</li>
+              <li>Mentoría a compañeros menos experimentados.</li>
+              <li>Autodidacta: constante toma de cursos y aprendizaje en línea.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-title">Hobbies</div>
+          <div class="card">
+            <ul>
+              <li>Carpintería.</li>
+              <li>Albañilería.</li>
+              <li>Plomería.</li>
+              <li>Electrícidad y Domótica.</li>
+              <li>Energía solar.</li>
+              <li>Coleccionismo.</li>
+              <li>Pintura Artística y de Interiores.</li>
+              <li>Artes Plásticas.</li>
+              <li>Diseño (Web/Gráfico/Interiores).</li>
+              <li>Videojuegos (PS5/PC/Nintendo/Arcades).</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>Actualizado 2025</footer>
+  </div>
+
+  <script>
+    // Mostrar / ocultar experiencia extra
+    document.getElementById("toggle-exp").addEventListener("click", function () {
+      const extra = document.getElementById("extra-experience");
+      extra.classList.toggle("hidden");
+      this.textContent = extra.classList.contains("hidden")
+        ? "Ver más experiencia"
+        : "Ocultar experiencia";
+    });
+
+    // Animar barras de habilidades
+    document.querySelectorAll(".skill-bar").forEach(function (bar) {
+      const level = bar.getAttribute("data-level");
+      const fill = bar.querySelector(".skill-bar-fill");
+      if (fill && level) {
+        fill.style.width = level + "%";
+      }
+    });
+  </script>
+</body>
+</html>
