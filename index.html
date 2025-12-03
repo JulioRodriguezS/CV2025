@@ -335,7 +335,7 @@
   <div class="cv">
     <header>
         <div class="avatar">
-            <img src="/profile-pic-sr-melkiades.jpg"
+            <img src="profile-pic-sr-melkiades.jpg"
                 alt="Foto de perfil de Señor Melquiades">
         </div>
       <div>
@@ -671,6 +671,24 @@
   </div>
 
   <script>
+     // Descargar CV como PDF A4
+    const downloadBtn = document.getElementById("download-pdf");
+    if (downloadBtn) {
+      downloadBtn.addEventListener("click", function () {
+        const element = document.querySelector(".cv");
+
+        const opt = {
+          margin:       [10, 10, 10, 10], // mm
+          filename:     "CV_Julio_Melquiades_Rodriguez_Soberano.pdf",
+          image:        { type: "jpeg", quality: 0.98 },
+          html2canvas:  { scale: 2, useCORS: true },
+          jsPDF:        { unit: "mm", format: "a4", orientation: "portrait" }
+        };
+
+        html2pdf().set(opt).from(element).save();
+      });
+    }
+
     // Mostrar / ocultar experiencia extra
     document.getElementById("toggle-exp").addEventListener("click", function () {
       const extra = document.getElementById("extra-experience");
