@@ -119,6 +119,41 @@
       text-decoration: underline;
     }
 
+    .download-btn {
+      margin-top: 12px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .download-btn:hover {
+      background: rgba(56, 189, 248, 0.3);
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+      }
+      .cv {
+        box-shadow: none;
+        border-radius: 0;
+        border: none;
+        max-width: 100%;
+        margin: 0;
+      }
+      .download-btn {
+        display: none; /* que no salga el botón en el PDF/impresión */
+      }
+    }
+
     main {
       display: grid;
       grid-template-columns: 2.1fr 1.4fr;
@@ -294,12 +329,13 @@
       text-align: right;
     }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
   <div class="cv">
     <header>
         <div class="avatar">
-            <img src="https://media.licdn.com/dms/image/v2/D4E03AQFdMRfsaOPFuQ/profile-displayphoto-shrink_800_800/B4EZaoRpbzHoAk-/0/1746579921430?e=1766620800&v=beta&t=MePHvDUuRd_do_oj1OR8Eg-CoHkrIDyGgktQ9xk-91U"
+            <img src="/profile-pic-sr-melkiades.jpg"
                 alt="Foto de perfil de Señor Melquiades">
         </div>
       <div>
@@ -334,6 +370,10 @@
           </a>
         </div>
         <div style="margin-top: 8px;"><strong>Ubicación:</strong> Cancún, Q. Roo, México</div>
+         <!-- Botón para descargar PDF -->
+        <button class="download-btn" id="download-pdf">
+          📄 Descargar PDF
+        </button>
       </div>
     </header>
 
