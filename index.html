@@ -328,43 +328,64 @@
          }
 
          /* =========================================
-        MAGIA PARA EL PDF (MÉTODO MUNIAIN)
+        MAGIA PARA EL PDF CORREGIDO
         ========================================= */
          .print-mode {
              background: #ffffff !important;
              color: #000000 !important;
+             padding: 0 !important;
+             margin: 0 !important;
          }
 
              .print-mode .cv {
                  box-shadow: none !important;
                  border: none !important;
                  background: #ffffff !important;
-                 padding: 10px !important;
+                 padding: 20px 30px !important; /* Damos respiro interno */
+                 margin: 0 !important;
+                 max-width: 100% !important;
+                 width: 100% !important;
              }
 
              .print-mode .avatar {
                  display: none !important;
              }
-             /* Cero foto en el CV impreso */
+
              .print-mode .download-btn, .print-mode .toggle-btn {
                  display: none !important;
              }
 
              .print-mode header {
                  border-bottom: 2px solid #000 !important;
+                 margin-bottom: 15px !important;
+                 padding-bottom: 10px !important;
              }
 
                  .print-mode header h1 {
                      color: #000 !important;
-                     font-size: 1.5rem;
+                     font-size: 1.4rem !important;
                  }
 
                  .print-mode header h2, .print-mode .exp-company, .print-mode .contact a {
                      color: #333 !important;
+                     font-size: 0.9rem !important;
                  }
 
-             .print-mode .summary, .print-mode .exp-body, .print-mode .text-muted, .print-mode .section-title {
+             .print-mode .summary {
                  color: #000 !important;
+                 font-size: 0.85rem !important;
+                 max-width: 100% !important;
+             }
+
+             .print-mode .exp-body, .print-mode .text-muted {
+                 color: #000 !important;
+                 font-size: 0.8rem !important;
+             }
+
+             .print-mode .section-title {
+                 color: #000 !important;
+                 font-size: 0.85rem !important;
+                 margin-bottom: 5px !important;
              }
 
                  .print-mode .section-title::before {
@@ -374,7 +395,7 @@
              .print-mode .card {
                  background: #fff !important;
                  border: none !important;
-                 padding: 5px 0 !important;
+                 padding: 0 !important;
                  margin-bottom: 5px !important;
              }
 
@@ -382,10 +403,13 @@
                  background: #eee !important;
                  color: #000 !important;
                  border: 1px solid #ccc !important;
+                 font-size: 0.7rem !important;
+                 padding: 2px 6px !important;
              }
 
              .print-mode .skill-bar {
                  background: #ccc !important;
+                 height: 4px !important;
              }
 
              .print-mode .skill-bar-fill {
@@ -393,12 +417,17 @@
              }
 
              .print-mode main {
-                 gap: 10px !important;
+                 gap: 20px !important;
                  margin-top: 10px !important;
+                 grid-template-columns: 2.2fr 1.3fr !important;
              }
 
              .print-mode section {
                  margin-bottom: 10px !important;
+             }
+
+             .print-mode .exp-item {
+                 margin-bottom: 8px !important;
              }
     </style>
 
@@ -587,7 +616,7 @@
     </div>
 
     <script>
-        // Configuración para el PDF (Blanco y negro, 1 sola página)
+        // Configuración Corregida para el PDF (Blanco y negro, 1 sola página sin cortes)
         const downloadBtn = document.getElementById("download-pdf");
         if (downloadBtn) {
             downloadBtn.addEventListener("click", function () {
@@ -601,15 +630,21 @@
 
                 const element = document.querySelector(".cv");
 
+                // 3. Opciones corregidas: scrollX y scrollY en 0 son la clave para que no se corte
                 const opt = {
                     margin: [5, 5, 5, 5],
                     filename: "CV_Julio_Melquiades_Rodriguez_Soberano.pdf",
                     image: { type: "jpeg", quality: 1 },
-                    html2canvas: { scale: 2, useCORS: true, windowWidth: 1080 },
+                    html2canvas: {
+                        scale: 2,
+                        useCORS: true,
+                        scrollX: 0,
+                        scrollY: 0
+                    },
                     jsPDF: { unit: "mm", format: "a4", orientation: "portrait" }
                 };
 
-                // 3. Generar PDF y remover estilos al terminar
+                // 4. Generar PDF y remover estilos al terminar
                 html2pdf().set(opt).from(element).save().then(() => {
                     document.body.classList.remove('print-mode');
                     extra.classList.add("hidden"); // Volver a ocultar
