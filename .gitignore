@@ -1,0 +1,17 @@
+.vs/
+*.slnx
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+ipch/
+*.VC.db
+*.VC.VC.opendb
+TestResults/
+[Bb]in/
+[Oo]bj/
+build/
+*.vspscc
+*.vssscc
+_ReSharper*/
+*.DotSettings.user
